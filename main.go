@@ -23,7 +23,7 @@ func main() {
 	doc, err := mscfb.New(*cfbffile)
 	kingpin.FatalIfError(err, "Failed to parse file")
 	log.Print("Read file")
-	dir, err := ioutil.TempDir(".", "cfbfdump-")
+	dir, err := ioutil.TempDir(".", (*cfbffile).Name())
 	kingpin.FatalIfError(err, "Cant create temp directory")
 	log.Printf("Creating output directory: %s", dir)
 	for entry, err := doc.Next(); err == nil; entry, err = doc.Next() {
